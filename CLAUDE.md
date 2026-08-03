@@ -106,6 +106,12 @@ SELECT count(*) FROM read_csv('2025/questions-thunderbird-*.csv',
 
 - Keep reusable SQL in `sql/`. Analyses are exploratory — prefer a readable
   query over a clever one.
+- **Python runs through `uv`, never bare `python3` or `pip`.** Scripts carry a
+  PEP 723 inline dependency block and the `#!/usr/bin/env -S uv run --script`
+  shebang, so `uv run sql/plot_gmail_monthly.py` needs no preinstalled
+  environment. Use `fontweight="bold"` in matplotlib rather than numeric
+  weights — uv's isolated env has no weight-600 face and falls back with a
+  warning.
 - Generated artifacts (charts, extracts) go in `output/`, never the repo root.
   Each chart ships with a CSV of the same name as its table-view twin.
 - Never edit files under `2023/`–`2026/`; they are scrape output.

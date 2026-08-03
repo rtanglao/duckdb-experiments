@@ -1,11 +1,15 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.11"
+# dependencies = ["matplotlib>=3.9"]
+# ///
 """Plot Gmail mentions in Thunderbird desktop support questions, by month.
 
 Reads thunderbird.duckdb directly and writes a PNG plus the companion CSV
 (the table-view twin of the chart).
 
-    python3 sql/plot_gmail_monthly.py           # loose substring match
-    python3 sql/plot_gmail_monthly.py --strict  # Gmail-the-topic only
+    uv run sql/plot_gmail_monthly.py           # loose substring match
+    uv run sql/plot_gmail_monthly.py --strict  # Gmail-the-topic only
 
 The loose match is a plain ILIKE '%gmail%' on raw HTML, so it also counts
 pasted @gmail.com addresses and gmail strings inside link hrefs. --strict
@@ -132,7 +136,7 @@ def main():
 
     headline, subtitle, source = TEXT_STRICT if STRICT else TEXT_LOOSE
     fig.text(0.055, 0.968, headline,
-             color=INK_PRIMARY, fontsize=17, fontweight="600", va="top")
+             color=INK_PRIMARY, fontsize=17, fontweight="bold", va="top")
     fig.text(0.055, 0.922, subtitle,
              color=INK_SECONDARY, fontsize=10.5, va="top")
 
@@ -144,7 +148,7 @@ def main():
         ax.plot(months, values, color=SERIES, linewidth=1.8,
                 solid_capstyle="round")
         ax.set_title(label, color=INK_SECONDARY, fontsize=11,
-                     fontweight="600", loc="left", pad=10)
+                     fontweight="bold", loc="left", pad=10)
         ax.set_ylim(0, max(values) * 1.16)
         ax.yaxis.grid(True, color=GRID, linewidth=0.8, linestyle="-")
         ax.set_axisbelow(True)
@@ -161,7 +165,7 @@ def main():
             ax.annotate(
                 fmt(values[i]), (months[i], values[i]),
                 textcoords="offset points", xytext=(dx, 9),
-                ha=ha, color=INK_PRIMARY, fontsize=10, fontweight="600",
+                ha=ha, color=INK_PRIMARY, fontsize=10, fontweight="bold",
             )
             ax.plot([months[i]], [values[i]], "o", color=SERIES,
                     markersize=5, markeredgecolor=SURFACE, markeredgewidth=2)
