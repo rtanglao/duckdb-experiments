@@ -93,4 +93,6 @@ SELECT count(*) FROM read_csv('2025/questions-thunderbird-*.csv',
 
 - Keep reusable SQL in `sql/`. Analyses are exploratory — prefer a readable
   query over a clever one.
+- Generated artifacts (charts, extracts) go in `output/`, never the repo root.
+  Each chart ships with a CSV of the same name as its table-view twin.
 - Never edit files under `2023/`–`2026/`; they are scrape output.
