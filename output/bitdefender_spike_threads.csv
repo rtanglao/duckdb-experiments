@@ -1,0 +1,72 @@
+id,created,locale,topic,is_solved,num_answers,title
+1528472,2025-08-11 12:41:51.404986+00,en-US,junk-mail-and-spam,true,13,Messagerie illisible (bitdefender)
+1528498,2025-08-11 15:04:25.506203+00,en-US,send-and-receive-email,true,5,Recent emails are coming in unformatted and missing subject and sender info (bitdefender)
+1528506,2025-08-11 15:40:29.735812+00,en-US,send-and-receive-email,false,18,Recent emails are coming in unformatted and missing subject and sender info (bitdefender)
+1528533,2025-08-11 17:19:53.597559+00,en-US,email-and-messaging,true,7,Every email is suddenly only displaying in html code
+1528543,2025-08-11 17:45:40.967599+00,en-US,send-and-receive-email,true,12,Corrupted btinternet emails (bitdefender)
+1528577,2025-08-11 19:50:41.291341+00,en-US,send-and-receive-email,false,5,Strange code dominating incoming emails (bitdefender)
+1528582,2025-08-11 20:13:18.697892+00,en-US,send-and-receive-email,true,7,my emails are coming in some strange type of figures and numbers starting today (bitdefender)
+1528583,2025-08-11 20:15:45.955285+00,en-US,email-and-messaging,false,30,email showing as code (bitdefender)
+1528597,2025-08-11 20:55:05.717853+00,en-US,junk-mail-and-spam,true,4,Tous mes mails entrant sont classés en spam et illisibles. (bitdefender)
+1528599,2025-08-11 20:59:23.85353+00,en-US,send-and-receive-email,true,40,Thunderbird 141.0 issue with incoming pop email today.  CAUSE: bitdefender
+1528606,2025-08-11 21:19:32.001476+00,en-US,send-and-receive-email,true,10,Oddly appearing and formatted emails (bitdefender)
+1528608,2025-08-11 21:28:54.496703+00,it,junk-mail-and-spam,true,18,Email: arrivano con le istruzioni base on i messaggi in chiaro
+1528624,2025-08-11 22:39:45.115033+00,en-US,customization,false,14,New emails appear as source HTML.  Tried cures.  No luck.  (bitdefender)
+1528644,2025-08-12 01:19:54.334932+00,en-US,send-and-receive-email,true,19,"Messages are suddenly not showing subject or from, and body looks like ""View message source"" (bitdefender)"
+1528675,2025-08-12 03:56:50.288115+00,en-US,send-and-receive-email,false,2,Messages not being formatted
+1528715,2025-08-12 09:00:44.937001+00,en-US,send-and-receive-email,false,11,Emails appearing in HTML format (bitdefender)
+1528722,2025-08-12 09:38:37.682352+00,nl,customization,false,3,Nieuwe berichten onleesbaar
+1528723,2025-08-12 09:51:17.239366+00,en-US,email-and-messaging,true,2,Problem with the display of downloaded emails (bitdefender)
+1528727,2025-08-12 10:07:13.575207+00,en-US,email-and-messaging,false,8,Emails are corrupted (bitdefender)
+1528732,2025-08-12 10:29:54.941772+00,en-US,send-and-receive-email,true,1,I have started receiving emails as attached. (bitdefender)
+1528733,2025-08-12 10:37:40.724222+00,en-US,security,true,4,"Has Thunderbird done anything with VADE Security? Since yesterday, all of my emails downloaded have been corruted by something called Vade Security, which appears to checking the whole email and including it's report mixed up in the message. (bitdefender)"
+1528744,2025-08-12 11:59:22.082819+00,en-US,send-and-receive-email,true,2,Emails received from (at)free.fr servers are no longer displayed in Thunderbird (bitdefender)
+1528755,2025-08-12 13:10:58.091705+00,en-US,customization,false,5,Message not displayed in usual format (bitdefender)
+1528773,2025-08-12 15:01:51.634401+00,nl,customization,true,3,"Plots zijn afzender en onderwerp verdwenen, ik krijg de hele html-tekst te zien (bitdefender)"
+1528775,2025-08-12 15:07:54.449282+00,en-US,send-and-receive-email,true,3,"Is there a new problem with teceiving emails on POP, as they are completely mixed up with VADE Secure techy stuff? (bitdefender)"
+1528779,2025-08-12 15:25:56.221817+00,en-US,send-and-receive-email,true,5,"started receiving messages with headers like ""X-RG-Rigid: 688CF4A102060D1 . X-RazorGate-Vade:..."" SOLVED by disabling bitdefender setting Encrypted web scan. (bitdefender)"
+1528783,2025-08-12 15:36:55.838053+00,en-US,send-and-receive-email,true,10,"Thunderbird 115.18.0 (win7) has started corrupting email with rich content (notbitdefender?). cause - Security had been set to ""None"" instead of ""SSL/TLS"" ?"
+1528790,2025-08-12 15:51:11.855724+00,en-US,encryption,false,5,receiving illegible and encrypted emails (not bitdefender)
+1528816,2025-08-12 17:39:42.933415+00,en-US,junk-mail-and-spam,true,4,les messages arrivent en anomalie avec X-ME-engine: defaul; X-ME-messagetype: clea; X-me-spamcause:;...
+1528822,2025-08-12 18:14:15.676008+00,en-US,send-and-receive-email,true,3,1 of my 2 email clients shows plain text instead of HTML. (bitdefender)
+1528828,2025-08-12 18:34:59.071973+00,en-US,send-and-receive-email,false,1,Message display problem
+1528856,2025-08-12 21:23:47.592017+00,en-US,send-and-receive-email,false,1,"I no longer receive correct emails from Thunderbird.   Each message received starts with something like ""X-Vadesecure"" or ""X-RazorGate-Vade"" followed by lots of what appears to be coded information. (bitdefender)"
+1528866,2025-08-12 22:17:40.314804+00,en-US,send-and-receive-email,false,3,Everything  in the inbox is gobbledygook (bitdefender)
+1528871,2025-08-12 22:50:32.988114+00,en-US,send-and-receive-email,true,1,what has happened to my e-mails (bitdefender)
+1528872,2025-08-12 23:11:46.963407+00,en-US,send-and-receive-email,false,1,HTML Messages (bitdefender)
+1528889,2025-08-13 01:03:18.400902+00,en-US,send-and-receive-email,false,5,Corrupt emails show as plain text only (bitdefender??). SOLVED by changing Earthlink POP security authentication from NONE to SSL
+1528911,2025-08-13 04:13:44.456279+00,en-US,email-and-messaging,true,9,Incomming Messages Not Being Displayed Correctly (bitdefender)
+1528916,2025-08-13 04:51:04.954171+00,en-US,send-and-receive-email,false,9,emails received without sender name or subject and in source code. (bitdefender)
+1528919,2025-08-13 05:11:47.9008+00,en-US,email-and-messaging,true,5,receiving emails with no header (bitdefender)
+1528920,2025-08-13 05:12:10.942006+00,en-US,email-and-messaging,true,5,e mails in kode text? (bitdefender)
+1528921,2025-08-13 05:13:05.016382+00,it,send-and-receive-email,false,7,messaggi codificati
+1528938,2025-08-13 06:25:09.807104+00,en-US,send-and-receive-email,true,2,Thunderbird
+1528939,2025-08-13 06:25:19.828002+00,en-US,send-and-receive-email,false,5,Thunderbird incoming emails are unreadable (bitdefender??)
+1528941,2025-08-13 06:38:50.283704+00,it,languages,false,4,[DOC] Errore codifica email (Agosto 2025)
+1528946,2025-08-13 07:12:29.865854+00,en-US,junk-mail-and-spam,true,4,Emails received in code
+1528957,2025-08-13 08:15:30.462697+00,en-US,send-and-receive-email,false,1,Version 140.1.1 esr messages via pop no longer correctly processed (bitdefender)
+1528978,2025-08-13 11:16:20.65319+00,en-US,junk-mail-and-spam,false,1,Problems with new messages after 140/141 update (bitdefender)
+1528984,2025-08-13 11:36:54.897726+00,nl,send-and-receive-email,false,1,berichten worden niet goed weergegeven
+1528987,2025-08-13 11:54:56.694285+00,en-US,email-and-messaging,true,1,Strange code appearing at the start of some of my INBOX emails (bitdefender)
+1528993,2025-08-13 12:22:56.177219+00,en-US,crashing-and-slow-performance,false,2,thunderbird incoming mail (bitdefender)
+1528995,2025-08-13 12:27:41.825856+00,en-US,send-and-receive-email,false,2,Lecture des messages à la réception (spam)
+1529008,2025-08-13 13:20:45.992231+00,en-US,send-and-receive-email,false,1,Incoming emails from my BT email account are in gibberish (bitdefender)
+1529030,2025-08-13 15:42:13.791354+00,nl,send-and-receive-email,false,1,request for solution to unreadable emails
+1529035,2025-08-13 15:55:36.072676+00,en-US,customization,true,4,Mails (bitdefender)
+1529041,2025-08-13 16:18:38.853278+00,en-US,send-and-receive-email,false,1,Email is numbers and symbols
+1529043,2025-08-13 16:22:11.900831+00,en-US,send-and-receive-email,true,4,Incoming emails
+1529044,2025-08-13 16:24:03.982424+00,en-US,send-and-receive-email,true,3,Problem: received emails appear encoded (bitdefender)
+1529049,2025-08-13 16:37:33.932304+00,en-US,email-and-messaging,true,3,incoming mails are since yesterday 2025-08-12 shown in HTML or similar nor in usual text (bitdefender?)
+1529073,2025-08-13 18:23:51.340431+00,en-US,send-and-receive-email,false,4,INBOX won't display message content
+1529082,2025-08-13 18:56:15.118914+00,en-US,send-and-receive-email,false,2,Thunderbird email client 141.0
+1529091,2025-08-13 19:38:39.663997+00,en-US,send-and-receive-email,false,6,messages coming through without showing sender or subject line
+1529096,2025-08-13 20:16:58.608122+00,en-US,performance-and-connectivity,true,2,eMail displayed in source code
+1529170,2025-08-14 03:47:27.434137+00,en-US,email-and-messaging,false,1,incoming email appears with the raw source format
+1529194,2025-08-14 06:48:51.99488+00,en-US,languages,true,3,Thunderbird gets emails from Ionos as letter salad
+1529212,2025-08-14 09:53:56.061338+00,en-US,send-and-receive-email,true,2,Impossible toread my mails.
+1529255,2025-08-14 14:11:53.08249+00,en-US,send-and-receive-email,false,4,Code instead of formatted message
+1529297,2025-08-14 16:38:53.061158+00,en-US,email-and-messaging,false,1,messages displayed in xml
+1529326,2025-08-14 18:47:36.596837+00,en-US,send-and-receive-email,false,1,Email format (bitdefender)
+1529335,2025-08-14 19:14:01.690821+00,en-US,email-and-messaging,false,1,emails with no subject and with a load of encoding information instead of just the message. (bitdefender)
+1529362,2025-08-14 21:59:51.60647+00,en-US,send-and-receive-email,true,2,"Formatting of my messages changed on or about Aug. 11, 2025 (bitdefender)"
+1529376,2025-08-14 23:44:17.138258+00,en-US,send-and-receive-email,true,14,Some incoming e-mails unformatted

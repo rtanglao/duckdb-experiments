@@ -21,6 +21,9 @@ JSON files, and SQL you write against them.
 
 - One file per **product × record type × day**. `product` is `thunderbird`
   (desktop) or `thunderbird-android`.
+- **The CSVs are deliberately untracked here** — they are committed in the
+  `aaq-scraper` repo, which produces them. Don't add them to this repo. A clone
+  without them can still build the database from `output/parquet/`.
 - Coverage: desktop is complete for every day 2023-01-01 → present. Android
   starts partial (31 days in 2023, 92 in 2024) and is complete from 2025 on.
 - Many daily files are header-only or hold a single row (~424 files are <200
