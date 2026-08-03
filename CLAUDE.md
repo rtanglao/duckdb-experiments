@@ -79,6 +79,15 @@ SELECT count(*) FROM read_csv('2025/questions-thunderbird-*.csv',
 - Group by `file_date` (from the filename) when you want "the day it was
   scraped"; group by `created` when you want "the day it was asked". They differ
   at day boundaries.
+- **Never `ATTACH ... (READ_ONLY)` in the DuckDB UI** (`duckdb -ui`). The UI
+  caches result sets in an in-memory catalog called `localMemDb`; a read-only
+  attach blocks that, and the failure surfaces as the misleading
+  `Binder Error: Catalog "localmemdb" does not exist!` on a perfectly valid
+  query. Use a plain `ATTACH`, or just launch with
+  `duckdb -ui thunderbird.duckdb` and let the UI attach it.
+- Only one process at a time. A read-write attach takes an exclusive file lock,
+  so while the UI holds the database open, a terminal `duckdb thunderbird.duckdb`
+  fails to attach — and so does `duckdb -readonly`. Close the UI first.
 
 ## Conventions
 
