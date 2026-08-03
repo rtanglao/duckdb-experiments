@@ -56,6 +56,19 @@ Loads **desktop CSVs only**, 2023–2026: 48,615 questions and 113,103 answers,
 each with a `filename` and a derived `file_date` column. Also creates indexes and
 a `question_threads` view. `*.duckdb` is gitignored — rebuild rather than commit.
 
+Faster path, and the only one that works without the year directories:
+
+```bash
+duckdb thunderbird.duckdb -f sql/build_from_parquet.sql   # ~0.5s
+```
+
+`output/parquet/` holds a committed zstd Parquet snapshot of both tables (29 MB
+vs 155 MB for the `.duckdb` file). The round-trip is exact — column types
+identical, zero rows in either direction of `EXCEPT` — but Parquet carries no
+schema objects, so the script recreates the indexes and the view. Regenerate the
+snapshot whenever you rebuild from CSVs; the `COPY` statements are in the
+script's header comment.
+
 Ad-hoc reads without materializing anything work fine too:
 
 ```sql
