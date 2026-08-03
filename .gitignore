@@ -216,3 +216,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# DuckDB databases (rebuild with sql/build_desktop_db.sql)
+*.duckdb
+*.duckdb.wal
