@@ -21,9 +21,22 @@ JSON files, and SQL you write against them.
 
 - One file per **product × record type × day**. `product` is `thunderbird`
   (desktop) or `thunderbird-android`.
-- **The CSVs are deliberately untracked here** — they are committed in the
-  `aaq-scraper` repo, which produces them. Don't add them to this repo. A clone
-  without them can still build the database from `output/parquet/`.
+- **The CSVs are gitignored here** — they are committed in the
+  [`aaq-scraper`](https://github.com/thunderbird/aaq-scraper) repo, which
+  produces them on an hourly cron. Don't add them to this repo. A clone without
+  them can still build the database from `output/parquet/`.
+
+  Refresh them from a sibling `aaq-scraper` checkout:
+
+  ```bash
+  uv run scripts/refresh_csvs.py            # git pull, then mirror
+  uv run scripts/refresh_csvs.py --dry-run  # report changes, write nothing
+  uv run scripts/refresh_csvs.py --rebuild  # also rebuild the db and Parquet
+  ```
+
+  It discovers year directories rather than hardcoding them, so 2027 needs no
+  edit, and it mirrors both ways — files the scraper no longer has get deleted
+  locally.
 - Coverage: desktop is complete for every day 2023-01-01 → present. Android
   starts partial (31 days in 2023, 92 in 2024) and is complete from 2025 on.
 - Many daily files are header-only or hold a single row (~424 files are <200

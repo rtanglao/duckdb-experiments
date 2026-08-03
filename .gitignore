@@ -220,3 +220,7 @@ __marimo__/
 # DuckDB databases (rebuild with sql/build_desktop_db.sql)
 *.duckdb
 *.duckdb.wal
+
+# Scraped CSVs -- mirrored from the aaq-scraper repo, which is where they are
+# version-controlled. Refresh with scripts/refresh-csvs.sh
+/[0-9][0-9][0-9][0-9]/
