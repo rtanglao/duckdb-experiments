@@ -57,8 +57,8 @@ period,series,threads
 2025-07-01,Bitdefender,91
 2025-10-01,Bitdefender,25
 2026-01-01,Bitdefender,19
-2026-04-01,Bitdefender,13
-2026-07-01,Bitdefender,3
+2026-04-01,Bitdefender,14
+2026-07-01,Bitdefender,4
 2023-01-01,ESET,7
 2023-04-01,ESET,9
 2023-07-01,ESET,6
@@ -117,7 +117,7 @@ period,series,threads
 2025-07-01,McAfee,19
 2025-10-01,McAfee,15
 2026-01-01,McAfee,8
-2026-04-01,McAfee,7
+2026-04-01,McAfee,8
 2026-07-01,McAfee,1
 2023-01-01,Microsoft Defender,38
 2023-04-01,Microsoft Defender,34
@@ -133,7 +133,7 @@ period,series,threads
 2025-10-01,Microsoft Defender,55
 2026-01-01,Microsoft Defender,32
 2026-04-01,Microsoft Defender,50
-2026-07-01,Microsoft Defender,8
+2026-07-01,Microsoft Defender,9
 2023-01-01,Norton,19
 2023-04-01,Norton,13
 2023-07-01,Norton,20
@@ -163,7 +163,7 @@ period,series,threads
 2025-10-01,_all_antivirus,291
 2026-01-01,_all_antivirus,248
 2026-04-01,_all_antivirus,227
-2026-07-01,_all_antivirus,47
+2026-07-01,_all_antivirus,52
 2023-01-01,_all_threads,2481
 2023-04-01,_all_threads,2093
 2023-07-01,_all_threads,3136
@@ -177,5 +177,5 @@ period,series,threads
 2025-07-01,_all_threads,4257
 2025-10-01,_all_threads,3282
 2026-01-01,_all_threads,2836
-2026-04-01,_all_threads,2372
-2026-07-01,_all_threads,787
+2026-04-01,_all_threads,2371
+2026-07-01,_all_threads,823
