@@ -9,6 +9,13 @@
 
 Runs sql/bitdefender_spike.sql first, so the CSV is always current.
 
+    uv run sql/plot_bitdefender_spike.py
+    uv run sql/plot_bitdefender_spike.py --trusted
+
+--trusted runs sql/bitdefender_spike_trusted.sql instead, which counts only
+answers from a trusted contributor or the person who asked, and writes the
+_trusted twins of both the CSV and the PNG.
+
 Two series on one axis, both in threads/day, so no dual axis is involved.
 This is the emphasis form rather than categorical: Bitdefender carries the
 accent hue, total volume recedes to gray as context.
@@ -18,6 +25,7 @@ Requires the database to be free of locks -- close the DuckDB UI first.
 
 import csv
 import subprocess
+import sys
 from datetime import date
 from pathlib import Path
 
@@ -29,8 +37,11 @@ from matplotlib.ticker import MultipleLocator
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT_DIR = ROOT / "output"
-CSV_IN = OUT_DIR / "bitdefender_daily.csv"
-PNG_OUT = OUT_DIR / "bitdefender_spike.png"
+TRUSTED = "--trusted" in sys.argv
+SUFFIX = "_trusted" if TRUSTED else ""
+SQL_IN = f"bitdefender_spike{SUFFIX}.sql"
+CSV_IN = OUT_DIR / f"bitdefender_daily{SUFFIX}.csv"
+PNG_OUT = OUT_DIR / f"bitdefender_spike{SUFFIX}.png"
 
 # Reference palette, light mode. Emphasis: one accent hue + de-emphasis gray.
 SURFACE = "#fcfcfb"
@@ -49,7 +60,7 @@ def load():
     OUT_DIR.mkdir(exist_ok=True)
     subprocess.run(
         ["duckdb", "-readonly", str(ROOT / "thunderbird.duckdb"),
-         "-f", str(ROOT / "sql" / "bitdefender_spike.sql")],
+         "-f", str(ROOT / "sql" / SQL_IN)],
         check=True, cwd=ROOT, stdout=subprocess.DEVNULL,
     )
     return list(csv.DictReader(CSV_IN.open()))
@@ -126,7 +137,8 @@ def main():
     ax_p.plot(days, pct, color=ACCENT, linewidth=2, solid_capstyle="round")
     ax_p.set_ylim(0, max(pct) * 1.25)
     ax_p.set_yticks([0, 10, 20, 30], ["0%", "10%", "20%", "30%"])
-    ax_p.set_title("Share of that day's questions mentioning Bitdefender",
+    ax_p.set_title("Share of that day's questions mentioning Bitdefender"
+                   + (" (trusted answers only)" if TRUSTED else ""),
                    color=INK_SECONDARY, fontsize=11.5, fontweight="bold",
                    loc="left", pad=10)
     top = max(spike, key=lambda i: pct[i])

@@ -59,6 +59,12 @@ FROM questions q
 LEFT JOIN answers a ON a.question_id = q.id
 GROUP BY ALL;
 
+-- trusted_contributors table + answers_trusted / answers_scored /
+-- question_threads_trusted views. Reads data/trusted-contributors/*.csv.
+.read sql/trusted_contributors.sql
+
 SELECT 'questions' AS tbl, count(*) AS rows, min(created) AS first, max(created) AS last FROM questions
 UNION ALL
-SELECT 'answers', count(*), min(created), max(created) FROM answers;
+SELECT 'answers', count(*), min(created), max(created) FROM answers
+UNION ALL
+SELECT 'answers_trusted', count(*), min(created), max(created) FROM answers_trusted;

@@ -92,6 +92,58 @@ SELECT count(*) FROM read_csv('2025/questions-thunderbird-*.csv',
                               union_by_name=true, filename=true);
 ```
 
+## Trusted contributors
+
+Both build scripts `.read sql/trusted_contributors.sql`, which loads
+`data/trusted-contributors/*.csv` into a `trusted_contributors` table and defines
+three views. An answer **counts** if its author is on the trusted list for the
+product **or** is the person who asked the question.
+
+- `answers_scored` — every answer plus `asker`, `by_asker`, `by_trusted`,
+  `counts`. Use when you want to slice by author type or compare filtered
+  against unfiltered.
+- `answers_trusted` — `answers_scored` where `counts`. A drop-in replacement for
+  `answers` in any query. Trusted twins exist for all three analyses:
+  `sql/gmail_mentions_trusted.sql`, `sql/antivirus_mentions_trusted.sql`, and
+  `sql/bitdefender_spike_trusted.sql`; the diff from each unfiltered original is
+  one identifier plus `_trusted` output paths. The two plot scripts take
+  `--trusted` and write `_trusted` twins of their PNG and CSV.
+  **The filter is nearly a no-op for the antivirus work** — it costs
+  `_all_antivirus` 81 threads of 3,751 (2.2%) and the Bitdefender spike 1 thread
+  of 71, because vendor names appear in the question text far more than in
+  answers. Worth knowing before reaching for the filtered variant.
+- `question_threads_trusted` — per-question counts, so "unanswered" means
+  "nobody who counts answered".
+
+Desktop split of 113,188 answers: 64,760 trusted-only, 38,480 asker-only, 362
+both — **9,586 dropped (8.5%)**, being 7,077 untrusted non-askers plus 2,509 with
+no verifiable author. The three kept buckets sum exactly to `answers_trusted`;
+if they ever don't, suspect a NULL leaking through a comparison.
+
+- **NULL creators need `coalesce`, not a bare `=`.** 2,258 answers have a NULL
+  creator and 4,096 hang off a question with a NULL creator (deleted or
+  anonymized SUMO accounts). `a.creator = q.creator` is NULL for those, so
+  `counts` goes NULL and `WHERE counts` silently discards rows the rule never
+  rejected. `answers_scored` coalesces to false and flags them `unattributable`,
+  so they are excluded on purpose and stay countable.
+
+- **The name join must be normalized.** Six SUMO usernames start with `@` or `-`
+  and the scrape stores them with a leading apostrophe (`'@next`, `'-db-`,
+  `'@SteveS`); the trusted list has them bare. A plain `=` join misses `'@next`
+  alone — 4,968 answers, the largest apparently-untrusted author in the corpus.
+  The `norm_creator()` macro (`lower(ltrim(x, ''''))`) handles it.
+- The lists are the metrics repo's, not this one's. Refresh with
+  `uv run scripts/refresh_trusted_contributors.py` (`--dry-run` to preview the
+  membership diff), then rerun `sql/trusted_contributors.sql`.
+- The `count` column is that contributor's answer count *when the list was last
+  generated*, and **it is months stale** — `davidsk` is 4,669 there against
+  17,801 answers here. Only the `creator` column is used. The last two desktop
+  rows (`shopov.bogomil`, `rtanglao`) were hand-appended and will be dropped by
+  a regeneration; tracked in
+  [metrics#75](https://github.com/thunderbird/thunderbird-metrics-and-reports/issues/75).
+- The android list has 3 names and the database is desktop-only, so the android
+  half of the table is loaded but unused.
+
 ## DuckDB gotchas in this repo
 
 - **Brace globs don't work.** `'{2023,2024}/questions-*.csv'` raises

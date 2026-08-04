@@ -35,6 +35,12 @@ FROM questions q
 LEFT JOIN answers a ON a.question_id = q.id
 GROUP BY ALL;
 
+-- trusted_contributors table + answers_trusted / answers_scored /
+-- question_threads_trusted views. Reads data/trusted-contributors/*.csv.
+.read sql/trusted_contributors.sql
+
 SELECT 'questions' AS tbl, count(*) AS rows FROM questions
 UNION ALL
-SELECT 'answers', count(*) FROM answers;
+SELECT 'answers', count(*) FROM answers
+UNION ALL
+SELECT 'answers_trusted', count(*) FROM answers_trusted;

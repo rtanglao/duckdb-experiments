@@ -10,6 +10,11 @@ an overall trend strip on top, and small multiples for the top 10 vendors
 below on a shared scale.
 
     uv run sql/plot_antivirus.py
+    uv run sql/plot_antivirus.py --trusted
+
+--trusted runs sql/antivirus_mentions_trusted.sql instead, which counts only
+answers from a trusted contributor or the person who asked, and writes the
+_trusted twins of both the CSV and the PNG.
 
 Ten series can't be ten colors -- the categorical palette caps at eight, and
 all-pairs forms cap at three. Small multiples carry identity in the panel
@@ -21,6 +26,7 @@ Requires the database to be free of locks -- close the DuckDB UI first.
 import collections
 import csv
 import subprocess
+import sys
 from datetime import date
 from pathlib import Path
 
@@ -32,8 +38,11 @@ from matplotlib.ticker import MultipleLocator
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT_DIR = ROOT / "output"
-CSV_IN = OUT_DIR / "antivirus_quarterly.csv"
-PNG_OUT = OUT_DIR / "antivirus_quarterly.png"
+TRUSTED = "--trusted" in sys.argv
+SUFFIX = "_trusted" if TRUSTED else ""
+SQL_IN = f"antivirus_mentions{SUFFIX}.sql"
+CSV_IN = OUT_DIR / f"antivirus_quarterly{SUFFIX}.csv"
+PNG_OUT = OUT_DIR / f"antivirus_quarterly{SUFFIX}.png"
 
 # Reference palette, light mode -- single categorical slot, validated.
 SURFACE = "#fcfcfb"
@@ -49,7 +58,7 @@ def load():
     OUT_DIR.mkdir(exist_ok=True)
     subprocess.run(
         ["duckdb", "-readonly", str(ROOT / "thunderbird.duckdb"),
-         "-f", str(ROOT / "sql" / "antivirus_mentions.sql")],
+         "-f", str(ROOT / "sql" / SQL_IN)],
         check=True, cwd=ROOT, stdout=subprocess.DEVNULL,
     )
     series = collections.defaultdict(dict)
@@ -111,7 +120,8 @@ def main():
     style(ax, periods)
     ax.plot(periods, av, color=SERIES, linewidth=2, solid_capstyle="round")
     ax.set_ylim(0, max(av) * 1.18)
-    ax.set_title("Threads mentioning antivirus, anti-virus, or anti virus",
+    ax.set_title("Threads mentioning antivirus, anti-virus, or anti virus"
+                 + (" (trusted answers only)" if TRUSTED else ""),
                  color=INK_SECONDARY, fontsize=11.5, fontweight="bold",
                  loc="left", pad=10)
     ax.yaxis.set_major_locator(MultipleLocator(100))
